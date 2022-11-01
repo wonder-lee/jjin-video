@@ -58,14 +58,14 @@ const SearchInput = ({
           console.log("error", error);
           setData(null);
           setErrorMessage(
-            `🥹 서버 에러가 발생하였습니다. 아직 개발 초기 단계라 에러 자동화를 못했습니다.! 메일로 무엇을 검색하다 발생했는지 문의 주시면 빠르게 확인하겠습니다!🙏🏻 errorMessage : ${error}`
+            `🥹 서버 에러가 발생하였습니다.메일로 무엇을 검색하다 발생했는지 문의 주시면 빠르게 확인하겠습니다!🙏🏻 errorMessage : ${error.response.data.errorMessage}`
           );
           return setVisible(true);
         });
-    } catch (error) {
+    } catch (error: any) {
       setData(null);
       setErrorMessage(
-        `🥹 서버 에러가 발생하였습니다. 아직 개발 초기 단계라 에러 자동화를 못했습니다.! 메일로 무엇을 검색하다 발생했는지 문의 주시면 빠르게 확인하겠습니다!🙏🏻 errorMessage : ${error}`
+        `🥹 서버 에러가 발생하였습니다.메일로 무엇을 검색하다 발생했는지 문의 주시면 빠르게 확인하겠습니다!🙏🏻 errorMessage : ${error.response.data.errorMessage}`
       );
       return setVisible(true);
     } finally {
