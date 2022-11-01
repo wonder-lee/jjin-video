@@ -62,11 +62,12 @@ const SearchInput = ({
           color="secondary"
           aria-label="searchInput"
           onChange={(e) => onChange(e)}
+          disabled={isLoading}
           contentRight={
             <>
               {isLoading ? (
-                <Button disabled auto flat color="success">
-                  <Loading type="points" color="secondary" size="sm" />
+                <Button flat disabled auto css={{ right: "36px" }}>
+                  <Loading type="points" color="secondary" size="xs" />
                 </Button>
               ) : (
                 <Button
