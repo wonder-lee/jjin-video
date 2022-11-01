@@ -17,6 +17,7 @@ const SearchInput = ({
   setData,
   isLoading,
   setIsLoading,
+  setListBykeywordCount,
 }: any) => {
   const [visible, setVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -27,6 +28,9 @@ const SearchInput = ({
   };
   const onChange = (e: any) => {
     setSearchQuery(e.target.value);
+  };
+  const getOnlyTotalCount = (count: number) => {
+    setListBykeywordCount(count);
   };
   const onSearch = async (e: any) => {
     e.preventDefault && e.preventDefault();
@@ -40,8 +44,8 @@ const SearchInput = ({
     try {
       await axios
         .get(`${BASE_URL}/getListByKeyword?searchQuery=${searchQuery}`)
-        .then(async (getListByKeywordResponse) => {
-          console.log("response", getListByKeywordResponse);
+        .then(async (getListByKeywordResponse: any) => {
+          getOnlyTotalCount(getListByKeywordResponse.data.totalCount);
           const postListBySubscriberResponse = await axios.post(
             `${BASE_URL}/postListBySubscriber`,
             getListByKeywordResponse.data
@@ -55,7 +59,6 @@ const SearchInput = ({
           setData(postListBySubscriberResponse.data);
         })
         .catch((error) => {
-          console.log("error", error);
           setData(null);
           setErrorMessage(
             `🥹 서버 에러가 발생하였습니다.메일로 무엇을 검색하다 발생했는지 문의 주시면 빠르게 확인하겠습니다!🙏🏻 errorMessage : ${error.response.data.errorMessage}`
@@ -69,13 +72,18 @@ const SearchInput = ({
       );
       return setVisible(true);
     } finally {
+      setListBykeywordCount(null);
       setIsLoading(false);
     }
   };
   return (
     <form onSubmit={(e) => onSearch(e)}>
       <Tooltip
-        content="2개 이상의 단어로 입력하시면 더 빠르게 검색됩니다! ⚡️ (ex : 강아지 시츄) 🐶"
+        content={
+          isLoading
+            ? "최대 1분에서 2분이 소요될 수 있습니다. 조금만 더 기다려 주세요! "
+            : "2개 이상의 단어로 입력하시면 더 빠르게 검색됩니다! ⚡️ (ex : 강아지 시츄) 🐶"
+        }
         placement="bottom"
         color="error"
         style={{ width: "unset" }}

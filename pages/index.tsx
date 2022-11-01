@@ -10,6 +10,7 @@ import { Container, Spacer } from "@nextui-org/react";
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [listByKeywordCount, setListBykeywordCount] = useState(0);
   const [data, setData] = useState();
   return (
     <div>
@@ -32,9 +33,14 @@ const Home = () => {
             setData={setData}
             isLoading={isLoading}
             setIsLoading={setIsLoading}
+            setListBykeywordCount={setListBykeywordCount}
           />
           <Spacer y={1} />
-          <Banners isLoading={isLoading} searchQuery={searchQuery} />
+          <Banners
+            isLoading={isLoading}
+            searchQuery={searchQuery}
+            listByKeywordCount={listByKeywordCount}
+          />
           <Spacer y={1} />
           <VideosTable data={data} isLoading={isLoading} />
           <Spacer y={1} />

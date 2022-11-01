@@ -45,7 +45,11 @@ const DetailInformation = () => {
           Youtube에서 제공되는 공식 API를 이용하여 데이터를 조회하고 있습니다.
         </Text>
       </Collapse>
-      <Collapse shadow title="당신은 누구입니까?" css={{ textAlign: "left" }}>
+      <Collapse
+        shadow
+        title="문의는 어디서 하나요?"
+        css={{ textAlign: "left" }}
+      >
         <Text>
           아래 참고영상을 열심히 보다가 <b>돈이 없어서..</b>
           <br />
