@@ -25,7 +25,7 @@ const Home = () => {
             textAlign: "center",
           }}
         >
-          <Title />
+          <Title setData={setData} />
           <SearchInput
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}

@@ -2,7 +2,7 @@ import { Card, Text } from "@nextui-org/react";
 
 const Banners = ({ isLoading, searchQuery }: any) => {
   return (
-    <Card css={{ maxWidth: "655px", margin: "0 auto" }}>
+    <Card css={{ maxWidth: "650px", margin: "0 auto" }}>
       <Card.Body>
         {isLoading ? (
           <Text weight="bold" css={{ textAlign: "center" }}>
@@ -54,6 +54,7 @@ const Banners = ({ isLoading, searchQuery }: any) => {
             <Text span css={{ color: "lightGray" }}>
               찾기
             </Text>
+            <br />
           </Text>
         )}
       </Card.Body>

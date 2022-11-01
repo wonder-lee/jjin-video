@@ -2,7 +2,14 @@ import { useState } from "react";
 import axios from "axios";
 import ModalCustom from "@components/common/modalCustom";
 import { BASE_URL } from "@constants/api";
-import { Input, Button, Modal, Text, Loading } from "@nextui-org/react";
+import {
+  Input,
+  Button,
+  Modal,
+  Text,
+  Loading,
+  Tooltip,
+} from "@nextui-org/react";
 
 const SearchInput = ({
   searchQuery,
@@ -21,7 +28,8 @@ const SearchInput = ({
   const onChange = (e: any) => {
     setSearchQuery(e.target.value);
   };
-  const onSearch = async () => {
+  const onSearch = async (e: any) => {
+    e.preventDefault && e.preventDefault();
     setData(null);
     setIsLoading(true);
     if (!searchQuery.length) {
@@ -43,26 +51,38 @@ const SearchInput = ({
     }
   };
   return (
-    <>
-      <Input
-        placeholder="영상의 키워드를 입력해 주세요."
-        width="250px"
-        aria-label="searchInput"
-        onChange={(e) => onChange(e)}
-        contentRight={
-          <>
-            {isLoading ? (
-              <Button disabled auto flat color="success">
-                <Loading type="points" color="secondary" size="sm" />
-              </Button>
-            ) : (
-              <Button flat color="secondary" auto onPress={onSearch}>
-                🔍
-              </Button>
-            )}
-          </>
-        }
-      />
+    <form onSubmit={(e) => onSearch(e)}>
+      <Tooltip
+        content="2개 이상의 단어로 입력하시면 더 빠르게 검색됩니다! ⚡️ (ex : 강아지 시츄) 🐶"
+        color="error"
+        style={{ width: "unset" }}
+      >
+        <Input
+          placeholder="키워드를 입력해 주세요."
+          color="secondary"
+          aria-label="searchInput"
+          onChange={(e) => onChange(e)}
+          contentRight={
+            <>
+              {isLoading ? (
+                <Button disabled auto flat color="success">
+                  <Loading type="points" color="secondary" size="sm" />
+                </Button>
+              ) : (
+                <Button
+                  flat
+                  color="secondary"
+                  auto
+                  onPress={(e) => onSearch(e)}
+                  css={{ right: "26px" }}
+                >
+                  🔍
+                </Button>
+              )}
+            </>
+          }
+        />
+      </Tooltip>
       <ModalCustom visible={visible} closeHandler={closeHandler}>
         <Modal.Header></Modal.Header>
         <Modal.Body>
@@ -76,7 +96,7 @@ const SearchInput = ({
           </Button>
         </Modal.Footer>
       </ModalCustom>
-    </>
+    </form>
   );
 };
 
