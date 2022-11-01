@@ -20,7 +20,6 @@ const SearchInput = ({
 }: any) => {
   const [visible, setVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
 
   const closeHandler = () => {
     setErrorMessage("");
@@ -47,6 +46,12 @@ const SearchInput = ({
             `${BASE_URL}/postListBySubscriber`,
             getListByKeywordResponse.data
           );
+          if (postListBySubscriberResponse.data.list.length === 0) {
+            setErrorMessage(
+              "🥹 검색하신 키워드로는 진주같은 영상이 없습니다. 다른 키워드로 도전해볼까요? 💪🏻"
+            );
+            return setVisible(true);
+          }
           setData(postListBySubscriberResponse.data);
         })
         .catch((error) => {
