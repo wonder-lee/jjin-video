@@ -1,4 +1,5 @@
-import { Collapse, Text } from "@nextui-org/react";
+import { Collapse, Text, Avatar, Tooltip } from "@nextui-org/react";
+import Link from "next/link";
 
 const DetailInformation = () => {
   return (
@@ -21,7 +22,7 @@ const DetailInformation = () => {
         <Text>3. 영상 길이는 4분 ~ 20분</Text>
         <Text>4. 조회수 최소 500회 이상</Text>
         <Text>5. 제목에 한글이 포함된 영상</Text>
-        <Text>6. 전체 영상 개수가 200만개 이상인 영상</Text>
+        <Text>6. 전체 영상 개수가 200만개 이하인 영상</Text>
         <Text>7. 영상 조회수가 구독자 수보다 높은 영상</Text>
         <br />
         <br />
@@ -47,12 +48,29 @@ const DetailInformation = () => {
       </Collapse>
       <Collapse shadow title="당신은 누구입니까?" css={{ textAlign: "left" }}>
         <Text>
-          인터넷 바다를 헤엄치는 나그네입니다. 🏊🏻‍♂️ <br />
+          인터넷 바다를 헤엄치는 초보 개발자입니다. 🏊🏻‍♂️ <br />
           어푸어푸 🌊
           <br />
           문의는 유리병에 편지를 담아 흘려 보내주세요. 🍾 <br />
           hi.wonder.dev@gmail.com 📨
         </Text>
+      </Collapse>
+      <Collapse shadow title="참고 영상" css={{ textAlign: "left" }}>
+        <Link href="https://youtu.be/TjGB5eTfTbM" target="_blank">
+          <Tooltip
+            content="요약 : 영상의 조회수가 구독자 수보다 높은 영상을 보고 배우자 → 노아 홈페이지 이용 → 유료 결제..🥲"
+            color="error"
+            placement="top"
+            style={{ width: "unset" }}
+          >
+            <iframe
+              id="ytplayer"
+              width="100%"
+              height="360"
+              src={`https://www.youtube.com/embed/TjGB5eTfTbM?autoplay=0&origin=http://example.com&controls=1&rel=1`}
+            ></iframe>
+          </Tooltip>
+        </Link>
       </Collapse>
     </Collapse.Group>
   );

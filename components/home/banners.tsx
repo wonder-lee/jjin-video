@@ -22,7 +22,16 @@ const Banners = ({ isLoading, searchQuery }: any) => {
               진주
             </Text>
             <Text span css={{ color: "lightGray" }}>
-              같은 영상을 찾고있습니다! 📡
+              같은
+            </Text>
+            <Text
+              span
+              css={{ textGradient: "45deg, $pink600 30%, $blue600 80%" }}
+            >
+              영상
+            </Text>
+            <Text span css={{ color: "lightGray" }}>
+              을 찾고있습니다! 📡
             </Text>
           </Text>
         ) : (
