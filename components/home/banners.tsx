@@ -6,8 +6,7 @@ const Banners = ({ isLoading, searchQuery, listByKeywordCount }: any) => {
   return (
     <Card css={{ maxWidth: "650px", margin: "0 auto" }}>
       <Card.Body>
-        <LoadingBanner searchQuery={searchQuery} />
-        {/* {(isLoading && !listByKeywordCount && (
+        {(isLoading && !listByKeywordCount && (
           <LoadingBanner searchQuery={searchQuery} />
         )) ||
           (isLoading && listByKeywordCount && (
@@ -15,7 +14,7 @@ const Banners = ({ isLoading, searchQuery, listByKeywordCount }: any) => {
               listByKeywordCount={listByKeywordCount}
               searchQuery={searchQuery}
             />
-          )) || <MainBanner />} */}
+          )) || <MainBanner />}
       </Card.Body>
     </Card>
   );
