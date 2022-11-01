@@ -20,6 +20,7 @@ const SearchInput = ({
 }: any) => {
   const [visible, setVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const closeHandler = () => {
     setErrorMessage("");
@@ -38,10 +39,19 @@ const SearchInput = ({
       return setVisible(true);
     }
     try {
-      const response = await axios.get(
-        `${BASE_URL}?searchQuery=${searchQuery}`
-      );
-      setData(response.data);
+      await axios
+        .get(`${BASE_URL}/getListByKeyword?searchQuery=${searchQuery}`)
+        .then(async (getListByKeywordResponse) => {
+          console.log("response", getListByKeywordResponse);
+          const postListBySubscriberResponse = await axios.post(
+            `${BASE_URL}/postListBySubscriber`,
+            getListByKeywordResponse.data
+          );
+          setData(postListBySubscriberResponse.data);
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
     } catch (error) {
       setData(null);
       setErrorMessage("🥹 네트워크 에러가 발생하였습니다. 🙏🏻");
