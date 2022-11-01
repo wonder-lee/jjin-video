@@ -22,7 +22,7 @@ const Banners = ({ isLoading, searchQuery }: any) => {
               진주
             </Text>
             <Text span css={{ color: "lightGray" }}>
-              같은
+              같은{" "}
             </Text>
             <Text
               span
