@@ -1,4 +1,5 @@
 import ResultProgress from "./resultProgress";
+import DetailInformation from "./detailInformation";
 import {
   Table,
   Textarea,
@@ -74,6 +75,7 @@ const VideosTable = ({ data, isLoading }: any) => {
       <ResultProgress
         totalCount={data?.totalCount}
         listCount={data?.listCount}
+        isLoading={isLoading}
       />
       <Spacer y={1} />
       <Table

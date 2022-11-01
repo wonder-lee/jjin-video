@@ -1,32 +1,61 @@
 import { Card, Text } from "@nextui-org/react";
 
-const Banners = () => {
+const Banners = ({ isLoading, searchQuery }: any) => {
   return (
     <Card css={{ maxWidth: "655px", margin: "0 auto" }}>
       <Card.Body>
-        <Text weight="bold" css={{ textAlign: "center" }}>
-          <Text
-            span
-            css={{ textGradient: "45deg, $pink600 30%, $blue600 80%" }}
-          >
-            진
+        {isLoading ? (
+          <Text weight="bold" css={{ textAlign: "center" }}>
+            <Text
+              span
+              css={{ textGradient: "45deg, $pink600 30%, $blue600 80%" }}
+            >
+              {searchQuery}
+            </Text>
+            <Text span css={{ color: "lightGray" }}>
+              에 관련된{" "}
+            </Text>
+            <Text
+              span
+              css={{ textGradient: "45deg, $pink600 30%, $blue600 80%" }}
+            >
+              진주
+            </Text>
+            <Text span css={{ color: "lightGray" }}>
+              같은 영상을 찾고있습니다! 📡
+            </Text>
           </Text>
-          흙속의{" "}
-          <Text
-            span
-            css={{ textGradient: "95deg, $pink600 30%, $blue600 80%" }}
-          >
-            진
+        ) : (
+          <Text weight="bold" css={{ textAlign: "center" }}>
+            <Text
+              span
+              css={{ textGradient: "45deg, $pink600 30%, $blue600 80%" }}
+            >
+              진
+            </Text>
+            <Text span css={{ color: "lightGray" }}>
+              흙속의{" "}
+            </Text>
+            <Text
+              span
+              css={{ textGradient: "95deg, $pink600 30%, $blue600 80%" }}
+            >
+              진
+            </Text>
+            <Text span css={{ color: "lightGray" }}>
+              주같은{" "}
+            </Text>
+            <Text
+              span
+              css={{ textGradient: "245deg, $pink600 30%, $blue600 80%" }}
+            >
+              영상
+            </Text>
+            <Text span css={{ color: "lightGray" }}>
+              찾기
+            </Text>
           </Text>
-          주같은{" "}
-          <Text
-            span
-            css={{ textGradient: "245deg, $pink600 30%, $blue600 80%" }}
-          >
-            영상
-          </Text>
-          찾기
-        </Text>
+        )}
       </Card.Body>
     </Card>
   );

@@ -4,6 +4,7 @@ import Title from "@components/home/title";
 import SearchInput from "@components/home/searchInput";
 import Banners from "@components/home/banners";
 import VideosTable from "@components/home/videosTable";
+import DetailInformation from "@components/home/detailInformation";
 import { Container, Spacer } from "@nextui-org/react";
 
 const Home = () => {
@@ -33,9 +34,11 @@ const Home = () => {
             setIsLoading={setIsLoading}
           />
           <Spacer y={1} />
-          <Banners />
+          <Banners isLoading={isLoading} searchQuery={searchQuery} />
           <Spacer y={1} />
           <VideosTable data={data} isLoading={isLoading} />
+          <Spacer y={1} />
+          <DetailInformation />
         </Container>
       </main>
     </div>

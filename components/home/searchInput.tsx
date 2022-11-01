@@ -12,8 +12,10 @@ const SearchInput = ({
   setIsLoading,
 }: any) => {
   const [visible, setVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const closeHandler = () => {
+    setErrorMessage("");
     setVisible(false);
   };
   const onChange = (e: any) => {
@@ -23,12 +25,22 @@ const SearchInput = ({
     setData(null);
     setIsLoading(true);
     if (!searchQuery.length) {
+      setErrorMessage("🥹 키워드를 입력해 주세요 🙏🏻");
       setIsLoading(false);
       return setVisible(true);
     }
-    const response = await axios.get(`${BASE_URL}?searchQuery=${searchQuery}`);
-    setData(response.data);
-    setIsLoading(false);
+    try {
+      const response = await axios.get(
+        `${BASE_URL}?searchQuery=${searchQuery}`
+      );
+      setData(response.data);
+    } catch (error) {
+      setData(null);
+      setErrorMessage("🥹 네트워크 에러가 발생하였습니다. 🙏🏻");
+      return setVisible(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
   return (
     <>
@@ -55,7 +67,7 @@ const SearchInput = ({
         <Modal.Header></Modal.Header>
         <Modal.Body>
           <Text b color="error" size={18} css={{ textAlign: "center" }}>
-            🥹 키워드를 입력해 주세요 🙏🏻
+            {errorMessage}
           </Text>
         </Modal.Body>
         <Modal.Footer>
