@@ -36,7 +36,13 @@ const DetailInformation = () => {
         <del>(응 그럴 일 없어 ~ 🤡)</del>
       </Collapse>
       <Collapse shadow title="당신은 누구입니까?" css={{ textAlign: "left" }}>
-        <Text>인터넷 바다를 헤엄치는 나그네입니다. 🏊🏻‍♂️ 어푸어푸 🌊</Text>
+        <Text>
+          인터넷 바다를 헤엄치는 나그네입니다. 🏊🏻‍♂️ <br />
+          어푸어푸 🌊
+          <br />
+          문의는 유리병에 편지를 담아 흘려 보내주세요. 🍾 <br />
+          hi.wonder.dev@gmail.com 📨
+        </Text>
       </Collapse>
     </Collapse.Group>
   );
