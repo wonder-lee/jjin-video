@@ -1,5 +1,4 @@
 import ResultProgress from "./resultProgress";
-import DetailInformation from "./detailInformation";
 import {
   Table,
   Textarea,
@@ -53,7 +52,7 @@ const VideosTable = ({ data, isLoading }: any) => {
           >
             <Avatar
               size="xl"
-              src="https://i.pravatar.cc/150?u=a042581f4e25056704b"
+              src={data.channelThumbnail.url || `/mong.jpeg`}
               color="gradient"
               bordered
               css={{ margin: "0 auto" }}
@@ -77,6 +76,25 @@ const VideosTable = ({ data, isLoading }: any) => {
         listCount={data?.listCount}
         isLoading={isLoading}
       />
+      <Spacer y={1} />
+      <Badge color="success" variant="flat">
+        6개월전 ~ 오늘
+      </Badge>
+      <Badge color="success" variant="flat">
+        4분 ~ 20분
+      </Badge>
+      <Badge color="success" variant="flat">
+        영상 개수 200만개 ⬇️
+      </Badge>
+      <Badge color="warning" variant="flat">
+        조회수 500회 ⬆️
+      </Badge>
+      <Badge color="warning" variant="flat">
+        한글 제목
+      </Badge>
+      <Badge color="error" variant="flat">
+        조회수 〉 구독자 수
+      </Badge>
       <Spacer y={1} />
       <Table
         aria-label="Example table with dynamic content & infinity pagination"
