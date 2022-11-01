@@ -35,6 +35,15 @@ const DetailInformation = () => {
         <br />
         <del>(응 그럴 일 없어 ~ 🤡)</del>
       </Collapse>
+      <Collapse
+        shadow
+        title="어떻게 분석을 하나요?"
+        css={{ textAlign: "left" }}
+      >
+        <Text>
+          Youtube에서 제공되는 공식 API를 이용하여 데이터를 조회하고 있습니다.
+        </Text>
+      </Collapse>
       <Collapse shadow title="당신은 누구입니까?" css={{ textAlign: "left" }}>
         <Text>
           인터넷 바다를 헤엄치는 나그네입니다. 🏊🏻‍♂️ <br />
