@@ -50,19 +50,7 @@ const DetailInformation = () => {
         title="문의는 어디서 하나요?"
         css={{ textAlign: "left" }}
       >
-        <Text>
-          아래 참고영상을 열심히 보다가 <b>돈이 없어서..</b>
-          <br />
-          필요한 기능만 공식 API 이용하여 만든 개발자입니다. (하지만
-          서버비..가..🥲)
-          <br />
-          <br />
-          또한 인터넷 바다를 헤엄치는 초보 개발자입니다. 🏊🏻‍♂️ <br />
-          어푸어푸 🌊
-          <br />
-          문의는 유리병에 편지를 담아 흘려 보내주세요. 🍾 <br />
-          hi.wonder.dev@gmail.com 📨
-        </Text>
+        <Text>hi.wonder.dev@gmail.com 📨</Text>
       </Collapse>
       <Collapse shadow title="참고 영상" css={{ textAlign: "left" }}>
         <Link href="https://youtu.be/TjGB5eTfTbM" target="_blank">
