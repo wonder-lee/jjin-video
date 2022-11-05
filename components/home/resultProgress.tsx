@@ -8,16 +8,19 @@ import {
   Badge,
 } from "@nextui-org/react";
 
-const ResultProgress = ({ totalCount, listCount, isLoading }: any) => {
+const ResultProgress = ({ data, isLoading }: any) => {
+  // const { totalCount, listCount } = data;
   return (
     <>
       <Tooltip
         content={
-          (totalCount &&
-            listCount &&
-            `${totalCount}개의 진흙 속에서 ${listCount}개의 진주를 찾아냈습니다! 🥳`) ||
+          (data?.totalCount &&
+            data?.listCount &&
+            `${data?.totalCount}개의 진흙 속에서 ${data?.listCount}개의 진주를 찾아냈습니다! 🥳`) ||
           (isLoading && `찾기 어려운 진주는 그만큼 값지답니다! 🤩`) ||
-          (!totalCount && !listCount && `키워드를 검색해 보세요! 🕵🏻‍♀️`)
+          (!data?.totalCount &&
+            !data?.listCount &&
+            `키워드를 검색해 보세요! 🕵🏻‍♀️`)
         }
         color="error"
         style={{ width: "unset" }}
@@ -33,13 +36,13 @@ const ResultProgress = ({ totalCount, listCount, isLoading }: any) => {
             height: "55px",
           }}
         >
-          {listCount > 0 && (
+          {data?.listCount > 0 && (
             <Text b color="white">
-              {listCount}
+              {data?.listCount}
             </Text>
           )}
           {isLoading && <Loading type="gradient" size="xs" />}
-          {!listCount && !isLoading && `💎`}
+          {!data?.listCount && !isLoading && `💎`}
         </Button>
       </Tooltip>
       <Spacer y={1} />

@@ -47,8 +47,9 @@ const Home = () => {
           />
           <Spacer y={1} />
           <ResultProgress
-            totalCount={data?.totalCount}
-            listCount={data?.listCount}
+            data={data}
+            // totalCount={data?.totalCount}
+            // listCount={data?.listCount}
             isLoading={isLoading}
           />
           <Spacer y={1} />

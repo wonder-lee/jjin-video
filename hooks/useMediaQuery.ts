@@ -20,7 +20,7 @@ export const useMediaQuery = (width: any) => {
     }
 
     return () => media.removeListener(updateTarget);
-  }, []);
+  }, [updateTarget, width]);
 
   return targetReached;
 };
