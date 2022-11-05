@@ -21,7 +21,7 @@ export default function VideosTable2() {
     };
   }
   const list = useAsyncList({ load });
-  console.log("list", list);
+
   return (
     <Table
       bordered
@@ -38,7 +38,7 @@ export default function VideosTable2() {
       <Table.Body
         items={list.items}
         loadingState={list.loadingState}
-        onLoadMore={() => console.log("enter")}
+        onLoadMore={() => console.log("hello JJIN VIDEO")}
       >
         {(item: any) => (
           <Table.Row key={item.name}>
